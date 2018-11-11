@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<project name="cqrs-blog" default="build" basedir=".">
+
+    <fileset dir="./" id="prodFile">
+        <exclude name=".env.dist"/>
+        <exclude name=".env.test"/>
+        <exclude name=".php_cs.dist"/>
+        <exclude name="phpunit.xml"/>
+        <exclude name="phpunit.xml.dist"/>
+        <exclude name="composer.lock"/>
+        <exclude name="symfony.lock"/>
+
+        <exclude name="**/*Test.php"/>
+        <exclude name="tests/**"/>
+
+        <exclude name="var/**"/>
+
+        <!--
+           //TODO: Delete after developing
+        -->
+        <exclude name="vendor/**"/>
+    </fileset>
+
+    <target name="tests">
+        <phpunit haltonerror="true" haltonfailure="true" printsummary="true">
+            <formatter type="plain" usefile="false" />
+
+            <batchtest>
+                <fileset dir="./tests">
+                    <include name="**/*Test*.php"/>
+                    <exclude name="bootstrap.php"/>
+                </fileset>
+            </batchtest>
+        </phpunit>
+    </target>
+
+    <target name="build" depends="tests">
+        <copy todir="../prod" overwrite="true">
+            <filterchain>
+                <stripphpcomments/>
+            </filterchain>
+
+            <fileset refid="prodFile" />
+        </copy>
+
+        <mkdir dir="../prod/var" mode="777"/>
+        <mkdir dir="../prod/var/cache" mode="777"/>
+        <mkdir dir="../prod/var/log" mode="777"/>
+    </target>
+
+</project>
