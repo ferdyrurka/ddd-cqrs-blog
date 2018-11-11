@@ -48,7 +48,7 @@
         "symfony/css-selector": "4.1.*",
         "friendsofphp/php-cs-fixer": "2.13.*",
         "symfony/test-pack": "*",
-        "phing/phing": "2.16.1"
+        "phing/phing": "3.0.x-dev"
     },
     "config": {
         "preferred-install": {
