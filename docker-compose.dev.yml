@@ -1,0 +1,44 @@
+version: '3.7'
+
+services:
+    web:
+        build:
+              context: ./etc/infrastructure/apache2
+              dockerfile: apache.Dockerfile
+        image: cqrs-blog-web
+        volumes:
+            - ./web:/var/www/html
+        container_name: web-cqrs-blog
+
+    proxy:
+        image: nginx:latest
+        ports:
+            - '${APP_PORT}:80'
+        volumes:
+            - ./etc/infrastructure/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+        container_name: proxy-cqrs-blog
+
+    postgresql:
+        image: postgres:latest
+        environment:
+            - POSTGRES_PASSWORD=${DB_PASS}
+            - POSTGRES_USER=${DB_USER}
+            - POSTGRES_DB=${DB_NAME}
+        volumes:
+          - postgresql:/var/lib/postgresql/data
+        ports:
+          - '${DB_PORT}:5432'
+        container_name: posgresql-cqrs-blog
+
+    jenkins:
+        image: jenkins:latest
+        ports:
+            - '8000:8080'
+            - '8500:50000'
+        volumes:
+            - jenkins:/var/jenkins_home
+        container_name: jenkins-cqrs-blog
+
+volumes:
+    postgresql:
+    jenkins:
