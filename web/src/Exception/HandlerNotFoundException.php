@@ -7,6 +7,6 @@ namespace App\Exception;
  * Class HandleNotFoundException
  * @package App\Exception
  */
-class HandlerNotFoundException
+class HandlerNotFoundException extends BlogException
 {
 }
