@@ -9,7 +9,7 @@ use App\Command\CommandInterface;
  * Interface CommandHandlerInterface
  * @package App\Service\Interfaces
  */
-interface CommandHandlerInterface
+interface HandlerInterface
 {
     public function handle(CommandInterface $command): void;
 }
