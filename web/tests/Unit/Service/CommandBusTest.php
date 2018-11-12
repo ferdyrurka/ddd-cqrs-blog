@@ -17,17 +17,34 @@ use Symfony\Component\DependencyInjection\Container;
  */
 class CommandBusTest extends TestCase
 {
+    use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+
     /**
      * @throws HandlerNotFoundException
      */
     public function testHandle(): void
     {
         $handler = Mockery::mock(HandlerInterface::class);
-        $handler->shouldReceive('handler')->withArgs([CommandInterface::class])->once();
+        $handler->shouldReceive('handle')->with(
+            Mockery::on(function ($command) {
+                if (!$command instanceof CommandInterface) {
+                    return false;
+                }
+
+                return true;
+            })
+        )->once();
 
         $container = Mockery::mock(Container::class);
-        $container->shouldReceive('get')->times(2)->withArgs([HandlerInterface::class])
-            ->andReturn($handler, null);
+        $container->shouldReceive('get')->times(2)->with(
+            Mockery::on(function (string $handler) {
+                if (!\preg_match('/HandlerInterface{1}/', $handler)) {
+                    return false;
+                }
+
+                return true;
+            })
+        )->andReturn($handler, null);
 
         $command = Mockery::mock(CommandInterface::class);
 
