@@ -7,6 +7,6 @@ namespace App\Exception;
  * Class HandleNotFoundException
  * @package App\Exception
  */
-class HandleNotFoundException
+class HandlerNotFoundException
 {
 }
