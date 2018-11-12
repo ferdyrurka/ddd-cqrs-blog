@@ -30,15 +30,5 @@ services:
           - '${DB_PORT}:5432'
         container_name: posgresql-cqrs-blog
 
-    jenkins:
-        image: jenkins:latest
-        ports:
-            - '8000:8080'
-            - '8500:50000'
-        volumes:
-            - jenkins:/var/jenkins_home
-        container_name: jenkins-cqrs-blog
-
 volumes:
     postgresql:
-    jenkins:
