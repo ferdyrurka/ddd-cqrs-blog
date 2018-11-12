@@ -24,8 +24,17 @@ class Post
 
     /**
      * @var string
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Length(max=255)
+     * @Assert\NotBlank()
+     */
+    private $title;
+
+    /**
+     * @var string
      * @ORM\Column(type="text", length=10000)
-     * @Assert\Length(max=10000, min=1)
+     * @Assert\Length(max=10000)
+     * @Assert\NotBlank()
      */
     private $content;
 
@@ -42,6 +51,22 @@ class Post
     public function getId(): int
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle(string $title): void
+    {
+        $this->title = $title;
     }
 
     /**
