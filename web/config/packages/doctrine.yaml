@@ -8,12 +8,12 @@ parameters:
 doctrine:
     dbal:
         # configure these for your database server
-        driver: 'pdo_mysql'
-        server_version: '5.7'
-        charset: utf8mb4
+        driver: 'pdo_pgsql'
+        server_version: '10.5'
+        charset: UTF8
         default_table_options:
-            charset: utf8mb4
-            collate: utf8mb4_unicode_ci
+            charset: UTF8
+            collate: pl_PL.utf8
 
         url: '%env(resolve:DATABASE_URL)%'
     orm:
@@ -25,5 +25,5 @@ doctrine:
                 is_bundle: false
                 type: annotation
                 dir: '%kernel.project_dir%/src/Domain/Entity'
-                prefix: 'App\Entity'
+                prefix: 'App\Domain\Entity'
                 alias: App
