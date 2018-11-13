@@ -12,7 +12,7 @@ class PostViewObject
     /**
      * @var \DateTime
      */
-    private $dateTime;
+    private $createdAt;
 
     /**
      * @var string
@@ -26,13 +26,13 @@ class PostViewObject
 
     /**
      * PostViewObject constructor.
-     * @param \DateTime $dateTime
+     * @param \DateTime $createdAt
      * @param string $content
      * @param string $title
      */
-    public function __construct(\DateTime $dateTime, string $content, string $title)
+    public function __construct(\DateTime $createdAt, string $content, string $title)
     {
-        $this->dateTime = $dateTime;
+        $this->createdAt = $createdAt;
         $this->content = $content;
         $this->title = $title;
     }
@@ -40,11 +40,13 @@ class PostViewObject
     /**
      * @return \DateTime
      */
-    public function getDateTime(): \DateTime
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt(): \DateTime
     {
-        return $this->dateTime;
+        return $this->createdAt;
     }
-
     /**
      * @return string
      */
