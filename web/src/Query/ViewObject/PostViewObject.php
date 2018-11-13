@@ -40,9 +40,6 @@ class PostViewObject
     /**
      * @return \DateTime
      */
-    /**
-     * @return \DateTime
-     */
     public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
