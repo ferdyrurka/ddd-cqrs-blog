@@ -24,13 +24,7 @@ class AddPostHandlerTest extends TestCase
     public function testHandle(): void
     {
         $postQuery = Mockery::mock(PostQuery::class);
-        $postQuery->shouldReceive('save')->with(Mockery::on(function (Post $post) {
-            if ($post->getCreatedAt() === null) {
-                return false;
-            }
-
-            return true;
-        }))->once();
+        $postQuery->shouldReceive('save')->withArgs([Post::class])->once();
 
         $validator = Mockery::mock(ValidatorInterface::class);
         $validator->shouldReceive('validate')->withArgs([Post::class])->times(2)
@@ -38,6 +32,8 @@ class AddPostHandlerTest extends TestCase
 
         $post = Mockery::mock(Post::class);
         $post->shouldReceive('setCreatedAt')->withArgs([\DateTime::class])->times(2);
+        $post->shouldReceive('setContent')->times(2)->withArgs(['&lt;?&gt;Hello']);
+        $post->shouldReceive('getContent')->times(2)->andReturn('<?>Hello');
 
         $command = new AddPostCommand($post);
 
