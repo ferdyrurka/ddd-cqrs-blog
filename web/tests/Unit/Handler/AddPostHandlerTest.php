@@ -37,7 +37,7 @@ class AddPostHandlerTest extends TestCase
             ->andReturn([], ['failed']);
 
         $post = Mockery::mock(Post::class);
-        $post->shouldReceive('setDateTime')->withArgs([\DateTime::class])->times(2);
+        $post->shouldReceive('setCreatedAt')->withArgs([\DateTime::class])->times(2);
 
         $command = new AddPostCommand($post);
 
