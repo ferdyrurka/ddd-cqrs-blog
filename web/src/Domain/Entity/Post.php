@@ -41,7 +41,6 @@ class Post
     /**
      * @var \DateTime
      * @ORM\Column(name="create_at", type="datetime")
-     * @Assert\NotBlank()
      */
     private $createdAt;
 
