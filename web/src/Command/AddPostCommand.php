@@ -9,7 +9,7 @@ use App\Domain\Entity\Post;
  * Class AddPostCommand
  * @package App\Command
  */
-class AddPostCommand
+class AddPostCommand implements CommandInterface
 {
     /**
      * @var Post
