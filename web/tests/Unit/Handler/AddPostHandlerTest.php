@@ -7,7 +7,7 @@ use App\Command\AddPostCommand;
 use App\Domain\Entity\Post;
 use App\Exception\ValidateEntityException;
 use App\Handler\AddPostHandler;
-use App\Repository\PostRepository;
+use App\Query\PostQuery;
 use \Mockery;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -23,8 +23,8 @@ class AddPostHandlerTest extends TestCase
      */
     public function testHandle(): void
     {
-        $postRepository = Mockery::mock(PostRepository::class);
-        $postRepository->shouldReceive('save')->with(Mockery::on(function (Post $post) {
+        $postQuery = Mockery::mock(PostQuery::class);
+        $postQuery->shouldReceive('save')->with(Mockery::on(function (Post $post) {
             if ($post->getCreatedAt() === null) {
                 return false;
             }
@@ -41,7 +41,7 @@ class AddPostHandlerTest extends TestCase
 
         $command = new AddPostCommand($post);
 
-        $addPostHandler = new AddPostHandler($postRepository, $validator);
+        $addPostHandler = new AddPostHandler($postQuery, $validator);
         $addPostHandler->handle($command);
 
         $this->expectException(ValidateEntityException::class);
