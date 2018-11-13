@@ -34,7 +34,7 @@ class CommandBus
      * @throws HandlerNotFoundException
      * @throws \Exception
      */
-    public function commandToHandler(string $command): HandlerInterface
+    private function commandToHandler(string $command): HandlerInterface
     {
         $commandHandler = str_replace('Command', 'Handler', $command);
         $handler = $this->container->get($commandHandler);
