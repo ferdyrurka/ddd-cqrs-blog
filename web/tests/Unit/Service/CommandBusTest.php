@@ -9,7 +9,7 @@ use App\Service\CommandBus;
 use PHPUnit\Framework\TestCase;
 use App\Exception\HandlerNotFoundException;
 use \Mockery;
-use Symfony\Component\DependencyInjection\Container;
+use Psr\Container\ContainerInterface;
 
 /**
  * Class CommandBusTest
@@ -35,7 +35,7 @@ class CommandBusTest extends TestCase
             })
         )->once();
 
-        $container = Mockery::mock(Container::class);
+        $container = Mockery::mock(ContainerInterface::class);
         $container->shouldReceive('get')->times(2)->with(
             Mockery::on(function (string $handler) {
                 if (!\preg_match('/HandlerInterface{1}/', $handler)) {

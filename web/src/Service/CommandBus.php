@@ -6,7 +6,7 @@ namespace App\Service;
 use App\Command\CommandInterface;
 use App\Exception\HandlerNotFoundException;
 use App\Handler\HandlerInterface;
-use Symfony\Component\DependencyInjection\Container;
+use Psr\Container\ContainerInterface;
 
 /**
  * Class CommandBus
@@ -15,15 +15,15 @@ use Symfony\Component\DependencyInjection\Container;
 class CommandBus
 {
     /**
-     * @var Container
+     * @var ContainerInterface
      */
     private $container;
 
     /**
      * CommandBus constructor.
-     * @param Container $container
+     * @param ContainerInterface $container
      */
-    public function __construct(Container $container)
+    public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
     }
