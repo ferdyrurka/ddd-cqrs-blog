@@ -4,9 +4,24 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        <style>
+            ul > li {
+                text-decoration: none;
+                list-style: none;
+             }
+        </style>
     </head>
     <body>
+        <header style="width: 100%; height: auto">
+            <ul>
+                <li><a href="{{ path('index.blog') }}">Home</a></li>
+                <li><a href="{{ path('addPost.blog') }}">Add post</a> </li>
+            </ul>
+        </header>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
+    <footer>
+        <span>Copyright by Łukasz Staniszewski</span>
+    </footer>
 </html>
