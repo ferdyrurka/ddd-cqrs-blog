@@ -10,19 +10,29 @@ CQRS (Command Query Responsibility Segregation) and Postgresql.
 Prosty projekt mający na celu zrozumienie wzorca projektowego
 CQRS (Command Query Responsibility Segregation) oraz Postgresql.
 
-## Wymagania
+## Tasks
 
 ######EN
 
-- Displaying posts.
+- Displaying posts, sorted by new -> old.
 - Adding posts.
 - Development environment based on Docker.
 
 ######PL
 
-- Wyświetlanie się postów.
+- Wyświetlanie się postów, sortuj od nowych -> starych.
 - Dodawanie postów.
 - Środowisko developerskie oparte o Dockera.
+
+## What i mistake
+
+######EN
+
+- Too small refactoring before the commit.
+
+######PL
+
+- Zbyt mały refactoring przed commitem.
 
 ## Author
 
