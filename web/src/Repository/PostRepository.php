@@ -24,9 +24,16 @@ class PostRepository extends ServiceEntityRepository implements PostQuery
         parent::__construct($registry, Post::class);
     }
 
+    /**
+     * @return array
+     */
     public function getAll(): array
     {
-        $posts = $this->findAll();
+        $posts = $this->createQueryBuilder('p')
+            ->orderBy('p.createdAt', 'DESC')
+            ->getQuery()
+            ->execute()
+        ;
 
         if (empty($posts)) {
             return [];
