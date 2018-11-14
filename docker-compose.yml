@@ -9,3 +9,7 @@ services:
         env_file:
             - .env
 
+    postgresqlTests:
+        env_file:
+            - .env
+

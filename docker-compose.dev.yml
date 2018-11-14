@@ -30,5 +30,18 @@ services:
           - '${DB_PORT}:5432'
         container_name: posgresql-cqrs-blog
 
+    postgresqlTests:
+        image: postgres:latest
+        environment:
+            - POSTGRES_PASSWORD=${DB_TEST_PASS}
+            - POSTGRES_USER=${DB_TEST_USER}
+            - POSTGRES_DB=${DB_TEST_NAME}
+        volumes:
+            - postgresqlTests:/var/lib/postgresql/data
+        ports:
+            - '${DB_TEST_PORT}:5432'
+        container_name: posgresql-test-cqrs-blog
+
 volumes:
     postgresql:
+    postgresqlTests:
