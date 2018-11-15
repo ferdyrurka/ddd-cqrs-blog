@@ -1,24 +1,24 @@
 # CQRS Blog
 
-######EN
+###### EN
 
 A simple project aimed at understanding the design pattern
 CQRS (Command Query Responsibility Segregation) and Postgresql.
 
-######PL
+###### PL
 
 Prosty projekt mający na celu zrozumienie wzorca projektowego
 CQRS (Command Query Responsibility Segregation) oraz Postgresql.
 
 ## Tasks
 
-######EN
+###### EN
 
 - Displaying posts, sorted by new -> old.
 - Adding posts.
 - Development environment based on Docker.
 
-######PL
+###### PL
 
 - Wyświetlanie się postów, sortuj od nowych -> starych.
 - Dodawanie postów.
@@ -26,11 +26,11 @@ CQRS (Command Query Responsibility Segregation) oraz Postgresql.
 
 ## What i mistake
 
-######EN
+###### EN
 
 - Too small refactoring before the commit.
 
-######PL
+###### PL
 
 - Zbyt mały refactoring przed commitem.
 
