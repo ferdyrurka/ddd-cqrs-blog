@@ -5,8 +5,10 @@ namespace App\Handler;
 
 use App\Command\CommandInterface;
 use App\Exception\ValidateEntityException;
-use App\Query\PostQuery;
+use App\Query\PostQueryInterface;
+use App\Repository\PostRepository;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use \DateTime;
 
 /**
  * Class AddPostHandler
@@ -15,41 +17,31 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class AddPostHandler implements HandlerInterface
 {
     /**
-     * @var PostQuery
+     * @var PostRepository
      */
-    private $postQuery;
-
-    /**
-     * @var ValidatorInterface
-     */
-    private $validator;
+    private $postRepository;
 
     /**
      * AddPostHandler constructor.
-     * @param PostQuery $postQuery
-     * @param ValidatorInterface $validator
+     * @param PostRepository $postRepository
      */
-    public function __construct(PostQuery $postQuery, ValidatorInterface $validator)
+    public function __construct(PostRepository $postRepository)
     {
-        $this->postQuery = $postQuery;
-        $this->validator = $validator;
+        $this->postRepository = $postRepository;
     }
 
     /**
      * @param CommandInterface $command
-     * @throws ValidateEntityException
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function handle(CommandInterface $command): void
     {
         $post = $command->getPost();
 
-        $post->setCreatedAt(new \DateTime('now', new \DateTimeZone('Europe/Warsaw')));
+        $post->setCreatedAt(new DateTime('now'));
         $post->setContent(htmlspecialchars($post->getContent()));
 
-        if (\count($this->validator->validate($post)) > 0) {
-            throw new ValidateEntityException('Validate failed in: ' . \get_class($post));
-        }
-
-        $this->postQuery->save($post);
+        $this->postRepository->save($post);
     }
 }
