@@ -31,4 +31,4 @@ services:
         container_name: prod-posgresql-cqrs-blog
 
 volumes:
-    posgres:
+    postgresql:
