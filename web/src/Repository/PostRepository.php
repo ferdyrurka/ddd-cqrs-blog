@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Domain\Entity\Post;
-use App\Query\PostQuery;
+use App\Query\PostQueryInterface;
 use App\Query\ViewObject\PostViewObject;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
@@ -13,7 +13,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
  * Class PostRepository
  * @package App\Repository
  */
-class PostRepository extends ServiceEntityRepository implements PostQuery
+class PostRepositoryInterface extends ServiceEntityRepository implements PostQueryInterface
 {
     /**
      * PostRepository constructor.
