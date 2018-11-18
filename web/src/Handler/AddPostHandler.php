@@ -4,10 +4,7 @@ declare(strict_types=1);
 namespace App\Handler;
 
 use App\Command\CommandInterface;
-use App\Exception\ValidateEntityException;
-use App\Query\PostQueryInterface;
 use App\Repository\PostRepository;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 use \DateTime;
 
 /**
