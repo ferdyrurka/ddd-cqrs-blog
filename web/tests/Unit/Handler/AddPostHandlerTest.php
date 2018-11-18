@@ -5,12 +5,11 @@ namespace App\Tests\Unit\Handler;
 
 use App\Command\AddPostCommand;
 use App\Domain\Entity\Post;
-use App\Exception\ValidateEntityException;
 use App\Handler\AddPostHandler;
-use App\Query\PostQuery;
+use App\Repository\PostRepository;
 use \Mockery;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
+use \DateTime;
 
 /**
  * Class AddPostHandlerTest
@@ -18,29 +17,25 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 class AddPostHandlerTest extends TestCase
 {
+    use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+
     /**
-     * @throws ValidateEntityException
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function testHandle(): void
     {
-        $postQuery = Mockery::mock(PostQuery::class);
-        $postQuery->shouldReceive('save')->withArgs([Post::class])->once();
-
-        $validator = Mockery::mock(ValidatorInterface::class);
-        $validator->shouldReceive('validate')->withArgs([Post::class])->times(2)
-            ->andReturn([], ['failed']);
+        $postRepository = Mockery::mock(PostRepository::class);
+        $postRepository->shouldReceive('save')->withArgs([Post::class])->once();
 
         $post = Mockery::mock(Post::class);
-        $post->shouldReceive('setCreatedAt')->withArgs([\DateTime::class])->times(2);
-        $post->shouldReceive('setContent')->times(2)->withArgs(['&lt;?&gt;Hello']);
-        $post->shouldReceive('getContent')->times(2)->andReturn('<?>Hello');
+        $post->shouldReceive('setCreatedAt')->withArgs([DateTime::class])->once();
+        $post->shouldReceive('setContent')->once()->withArgs(['&lt;?&gt;Hello']);
+        $post->shouldReceive('getContent')->once()->andReturn('<?>Hello');
 
         $command = new AddPostCommand($post);
 
-        $addPostHandler = new AddPostHandler($postQuery, $validator);
-        $addPostHandler->handle($command);
-
-        $this->expectException(ValidateEntityException::class);
+        $addPostHandler = new AddPostHandler($postRepository);
         $addPostHandler->handle($command);
     }
 }
