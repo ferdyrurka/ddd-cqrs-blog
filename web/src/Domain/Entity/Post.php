@@ -12,7 +12,7 @@ use \DateTime;
  * @ORM\Table(name="post")
  * @ORM\Entity()
  */
-class Post implements EntityInterface
+class Post
 {
     /**
      * @var int

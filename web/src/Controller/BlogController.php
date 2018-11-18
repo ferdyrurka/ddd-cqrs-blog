@@ -6,7 +6,7 @@ namespace App\Controller;
 use App\Command\AddPostCommand;
 use App\Domain\Entity\Post;
 use App\Form\AddPostForm;
-use App\Query\PostQuery;
+use App\Query\PostQueryInterface;
 use App\Service\CommandBus;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -21,12 +21,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class BlogController extends Controller
 {
     /**
-     * @param PostQuery $postQuery
+     * @param PostQueryInterface $postQuery
      * @return array
      * @Route("/", methods={"GET"}, name="index.blog")
      * @Template("blog/index.html.twig")
      */
-    public function indexAction(PostQuery $postQuery): array
+    public function indexAction(PostQueryInterface $postQuery): array
     {
         return [
             'posts' => $postQuery->getAll()
