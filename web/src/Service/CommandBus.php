@@ -29,6 +29,17 @@ class CommandBus
     }
 
     /**
+     * @param CommandInterface $command
+     * @throws HandlerNotFoundException
+     */
+    public function handle(CommandInterface $command): void
+    {
+        $handler = $this->commandToHandler(\get_class($command));
+
+        $handler->handle($command);
+    }
+
+    /**
      * @param string $command
      * @return HandlerInterface
      * @throws HandlerNotFoundException
@@ -44,16 +55,5 @@ class CommandBus
         }
 
         return $handler;
-    }
-
-    /**
-     * @param CommandInterface $command
-     * @throws HandlerNotFoundException
-     */
-    public function handle(CommandInterface $command): void
-    {
-        $handler = $this->commandToHandler(\get_class($command));
-
-        $handler->handle($command);
     }
 }
