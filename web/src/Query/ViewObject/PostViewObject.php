@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Query\ViewObject;
 
+use \DateTime;
+
 /**
  * Class PostViewObject
  * @package App\Query\ViewObject
@@ -30,7 +32,7 @@ class PostViewObject
      * @param string $content
      * @param string $title
      */
-    public function __construct(\DateTime $createdAt, string $content, string $title)
+    public function __construct(DateTime $createdAt, string $content, string $title)
     {
         $this->createdAt = $createdAt;
         $this->content = $content;
