@@ -28,7 +28,7 @@ class PostViewObject
 
     /**
      * PostViewObject constructor.
-     * @param \DateTime $createdAt
+     * @param DateTime $createdAt
      * @param string $content
      * @param string $title
      */
@@ -40,9 +40,9 @@ class PostViewObject
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
     }
