@@ -36,7 +36,8 @@ class CommandBusTest extends TestCase
         )->once();
 
         $container = Mockery::mock(ContainerInterface::class);
-        $container->shouldReceive('get')->times(2)->with(
+        $container->shouldReceive('has')->times(2)->andReturn(true, false);
+        $container->shouldReceive('get')->times(1)->with(
             Mockery::on(function (string $handler) {
                 if (!\preg_match('/HandlerInterface{1}/', $handler)) {
                     return false;
@@ -44,7 +45,7 @@ class CommandBusTest extends TestCase
 
                 return true;
             })
-        )->andReturn($handler, null);
+        )->andReturn($handler);
 
         $command = Mockery::mock(CommandInterface::class);
 

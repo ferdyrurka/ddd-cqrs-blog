@@ -48,9 +48,14 @@ class CommandBus
     private function commandToHandler(string $command): HandlerInterface
     {
         $commandHandler = str_replace('Command', 'Handler', $command);
+
+        if (!$this->container->has($commandHandler)) {
+            throw new HandlerNotFoundException('Handler not found from: ' . $command);
+        }
+
         $handler = $this->container->get($commandHandler);
 
-        if (empty($handler) || !$handler instanceof HandlerInterface) {
+        if (!$handler instanceof HandlerInterface) {
             throw new HandlerNotFoundException('Handler not found from: ' . $command);
         }
 
