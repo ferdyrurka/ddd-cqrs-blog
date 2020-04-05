@@ -1,15 +1,23 @@
-version: '3.7'
+version: '3'
 
 services:
-    proxy:
-        env_file:
-            - .env
+    admin:
+        image: php:7-4-cqrs-blog
+        build:
+            dockerfile: Dockerfile
+            context: .docker/apache2
+        ports:
+            - 8081:80
+        volumes:
+            - './blog:/var/www/html'
+            - './.docker/apache2/admin.conf:/etc/apache2/sites-enabled/000-default.conf'
 
-    postgresql:
-        env_file:
-            - .env
-
-    postgresqlTests:
-        env_file:
-            - .env
-
+    client:
+        image: php:7-4-cqrs-blog
+        depends_on:
+          - admin
+        ports:
+            - 8080:80
+        volumes:
+            - './blog:/var/www/html'
+            - './.docker/apache2/client.conf:/etc/apache2/sites-enabled/000-default.conf'

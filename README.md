@@ -1,38 +1,25 @@
 # CQRS Blog
 
-###### EN
-
 A simple project aimed at understanding the design pattern
-CQRS (Command Query Responsibility Segregation) and Postgresql.
+CQRS (Command Query Responsibility Segregation).
 
-###### PL
+## Local
 
-Prosty projekt mający na celu zrozumienie wzorca projektowego
-CQRS (Command Query Responsibility Segregation) oraz Postgresql.
+### Linux
 
-## Tasks
+* Admin panel http://admin.lukaszstaniszewski.local:8080/
+* Client http://lukaszstaniszewski.local:8081/
 
-###### EN
+You must added in /etc/hosts
 
-- Displaying posts, sorted by new -> old.
-- Adding posts.
-- Development environment based on Docker.
+```
+127.0.0.1       lukaszstaniszewski.local
+127.0.0.1       admin.lukaszstaniszewski.local
+```
 
-###### PL
+## Example prod implementation 
 
-- Wyświetlanie się postów, sortuj od nowych -> starych.
-- Dodawanie postów.
-- Środowisko developerskie oparte o Dockera.
-
-## What i mistake
-
-###### EN
-
-- Too small refactoring before the commit.
-
-###### PL
-
-- Zbyt mały refactoring przed commitem.
+* 
 
 ## Author
 
