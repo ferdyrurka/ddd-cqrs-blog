@@ -7,9 +7,6 @@ CQRS (Command Query Responsibility Segregation).
 
 ### Linux
 
-* Admin panel http://admin.lukaszstaniszewski.local:8080/
-* Client http://lukaszstaniszewski.local:8081/
-
 You must added in /etc/hosts
 
 ```
