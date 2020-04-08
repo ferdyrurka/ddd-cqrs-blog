@@ -5,20 +5,14 @@ services:
         autowire: true
         autoconfigure: true
 
-    Blog\:
+    App\Blog\:
         resource: '../src/Blog/*'
-        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests}'
 
-    App\Blog\Admin\:
-        resource: '../app/blog/admin/src/*'
+#    App\Blog\Admin\Api\Controller\:
+#        resource: '../app/blog/admin/api/src/Controller'
+#        tags: ['controller.service_arguments']
 
-    App\Blog\Client\:
-        resource: '../app/blog/client/src/*'
-
-    App\Blog\Admin\Controller\:
-        resource: '../app/blog/admin/src/Controller'
-        tags: ['controller.service_arguments']
-
-    App\Blog\Client\Controller\:
-        resource: '../app/blog/client/src/Controller'
-        tags: ['controller.service_arguments']
+#    App\Blog\Client\Api\Controller\:
+#        resource: '../app/blog/client/api/src/Controller'
+#        tags: ['controller.service_arguments']
