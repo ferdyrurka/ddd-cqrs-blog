@@ -1,0 +1,7 @@
+blog_post_controller:
+    resource: '../../src/Blog/UI/Post/API/Controller'
+    type: annotation
+
+kernel:
+    resource: ../../src/Kernel.php
+    type: annotation

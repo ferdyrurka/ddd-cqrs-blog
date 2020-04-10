@@ -14,9 +14,15 @@ You must added in /etc/hosts
 127.0.0.1       admin.lukaszstaniszewski.local
 ```
 
-## Example prod implementation 
+## Links
 
-* 
+Client app http://lukaszstaniszewski.local
+
+Admin app http://admin.lukaszstaniszewski.local
+
+Client api http://lukaszstaniszewski.local/api/v1
+
+Admin api http://admin.lukaszstaniszewski.local/api/v1
 
 ## Author
 

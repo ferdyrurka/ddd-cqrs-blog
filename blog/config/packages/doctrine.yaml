@@ -1,0 +1,20 @@
+doctrine:
+    dbal:
+        url: '%env(resolve:DATABASE_URL)%'
+    orm:
+        auto_generate_proxy_classes: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        auto_mapping: true
+        mappings:
+            Blog\Post:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Blog/Domain/Post'
+                prefix: 'App\Blog\Domain\Post'
+                alias: Blog\Post
+            Blog\Shared:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Blog/Domain/Shared'
+                prefix: 'App\Blog\Domain\Shared'
+                alias: Blog\Shared

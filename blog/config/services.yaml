@@ -5,8 +5,8 @@ services:
         autowire: true
         autoconfigure: true
 
-    App\Blog\:
-        resource: '../src/Blog/*'
+    App\:
+        resource: '../src/*'
         exclude: '../src/{DependencyInjection,Entity,Migrations,Tests}'
 
 #    App\Blog\Admin\Api\Controller\:

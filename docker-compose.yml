@@ -29,3 +29,16 @@ services:
         volumes:
             - './blog:/var/www/html'
             - './.docker/apache2/client.conf:/etc/apache2/sites-enabled/000-default.conf'
+
+    db:
+        image: mysql:5.7
+        environment:
+            - MYSQL_ROOT_PASSWORD=YOUR_DB_PASSWORD
+            - MYSQL_DATABASE=cqrs-blog-dev
+        volumes:
+            - mysql:/var/lib/mysql
+        ports:
+            - '3306:3306'
+
+volumes:
+  mysql:
