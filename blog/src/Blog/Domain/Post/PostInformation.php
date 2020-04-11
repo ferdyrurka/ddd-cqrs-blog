@@ -62,6 +62,11 @@ final class PostInformation
         return $this->plannedPublishAt;
     }
 
+    public function isPublish(): bool
+    {
+        return $this->publish;
+    }
+
     private function validatePublishType(string $publishType): bool
     {
         return !PublishType::search($publishType);

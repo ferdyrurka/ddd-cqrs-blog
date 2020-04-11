@@ -19,6 +19,7 @@ class CreatePostController extends AbstractController
      * @return JsonResponse
      *
      * @Route("/admin/create/post", methods={"POST"})
+     * @throws \Exception
      */
     public function createAction(Request $request): JsonResponse
     {
