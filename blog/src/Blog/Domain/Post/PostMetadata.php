@@ -14,4 +14,9 @@ final class PostMetadata
      * @ORM\Column(type="string", length=128, unique=true)
      */
     private string $slug;
+
+    public function __construct(string $slug)
+    {
+        $this->slug = $slug;
+    }
 }

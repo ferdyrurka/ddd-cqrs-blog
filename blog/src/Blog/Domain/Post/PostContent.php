@@ -26,4 +26,14 @@ final class PostContent
         $this->title = $title;
         $this->content = $content;
     }
+
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    public function getContent(): string
+    {
+        return $this->content;
+    }
 }

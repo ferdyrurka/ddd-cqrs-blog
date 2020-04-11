@@ -17,22 +17,22 @@ use DateTime;
 final class Post
 {
     /**
-     * @ORM\Embedded(class="App\Blog\Domain\Shared\PostId")
+     * @ORM\Embedded(class="App\Blog\Domain\Shared\PostId", columnPrefix=false)
      */
     private PostId $postId;
 
     /**
-     * @ORM\Embedded(class="App\Blog\Domain\Post\PostContent")
+     * @ORM\Embedded(class="App\Blog\Domain\Post\PostContent", columnPrefix=false)
      */
     private PostContent $postContent;
 
     /**
-     * @ORM\Embedded(class="App\Blog\Domain\Post\PostInformation")
+     * @ORM\Embedded(class="App\Blog\Domain\Post\PostInformation", columnPrefix=false)
      */
     private PostInformation $postInformation;
 
     /**
-     * @ORM\Embedded(class="App\Blog\Domain\Post\PostMetadata")
+     * @ORM\Embedded(class="App\Blog\Domain\Post\PostMetadata", columnPrefix=false)
      */
     private PostMetadata $postMetadata;
 

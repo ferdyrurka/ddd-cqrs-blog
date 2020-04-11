@@ -1,7 +1,12 @@
 framework:
     messenger:
+        default_bus: command.bus
+        buses:
+            command.bus:
+
+            query.bus:
 
         transports:
-
+            sync: 'sync://'
         routing:
-
+            App\Blog\Application\UseCase\Command\Post\CreatePostCommand: [sync]

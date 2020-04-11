@@ -7,11 +7,11 @@ use MyCLabs\Enum\Enum;
 
 /**
  * @method static PublishType CRON()
- * @method static PublishType MANUAL()
+ * @method static PublishType NOW()
  */
 class PublishType extends Enum
 {
     public const CRON = 'cron';
 
-    public const MANUAL = 'manual';
+    public const NOW = 'now';
 }

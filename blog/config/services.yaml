@@ -9,10 +9,14 @@ services:
         resource: '../src/*'
         exclude: '../src/{DependencyInjection,Entity,Migrations,Tests}'
 
-#    App\Blog\Admin\Api\Controller\:
-#        resource: '../app/blog/admin/api/src/Controller'
-#        tags: ['controller.service_arguments']
+    App\Blog\UI\Controller\Admin\:
+        resource: '../src/Blog/UI/Controller/Admin'
+        tags: ['controller.service_arguments']
 
-#    App\Blog\Client\Api\Controller\:
-#        resource: '../app/blog/client/api/src/Controller'
-#        tags: ['controller.service_arguments']
+    App\Blog\Application\UseCase\Command\Post\:
+        resource: '%kernel.project_dir%//src/Blog/Application/UseCase/Command/Post/*CommandHandler.php'
+        public: true
+        autowire: true
+        autoconfigure: false
+        tags:
+            - { name: messenger.message_handler, bus: command.bus }

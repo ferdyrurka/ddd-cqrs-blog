@@ -1,5 +1,5 @@
-blog_post_controller:
-    resource: '../../src/Blog/UI/Post/API/Controller'
+admin_controller:
+    resource: '../../src/Blog/UI/Controller/Admin'
     type: annotation
 
 kernel:
