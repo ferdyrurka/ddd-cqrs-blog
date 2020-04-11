@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {registerLocaleData} from '@angular/common';
+import localePl from '@angular/common/locales/pl';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'blog-admin';
+  constructor() {
+    registerLocaleData(localePl, 'pl-Pl')
+  }
 }
