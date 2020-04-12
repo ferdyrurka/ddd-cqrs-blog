@@ -10,3 +10,4 @@ framework:
             sync: 'sync://'
         routing:
             App\Blog\Application\UseCase\Command\Post\CreatePostCommand: [sync]
+            App\Blog\Application\Query\Post\FindAllPublishedPostQueryHandler: [sync]

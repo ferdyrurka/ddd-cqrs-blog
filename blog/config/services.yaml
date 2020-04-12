@@ -20,3 +20,11 @@ services:
         autoconfigure: false
         tags:
             - { name: messenger.message_handler, bus: command.bus }
+
+    App\Blog\Application\Query\Post\:
+        resource: '%kernel.project_dir%//src/Blog/Application/Query/Post/*QueryHandler.php'
+        public: true
+        autowire: true
+        autoconfigure: false
+        tags:
+            - { name: messenger.message_handler, bus: query.bus }

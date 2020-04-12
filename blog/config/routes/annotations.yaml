@@ -2,6 +2,10 @@ admin_controller:
     resource: '../../src/Blog/UI/Controller/Admin'
     type: annotation
 
+client_controller:
+    resource: '../../src/Blog/UI/Controller/Client'
+    type: annotation
+
 kernel:
     resource: ../../src/Kernel.php
     type: annotation
