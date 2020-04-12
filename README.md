@@ -20,11 +20,37 @@ Client api http://lukaszstaniszewski.local/api/v1
 
 Admin api http://admin.lukaszstaniszewski.local/api/v1
 
+## API
+
+#### Add post
+
+**URL:** http://admin.lukaszstaniszewski.local/api/v1/admin/create/post
+
+**HTTP method:** POST
+
+**Body:**
+
+```json
+{
+	"title": "Hello World title",
+	"content": "Hello World content",
+	"publishType": "cron",
+	"plannedPublishAt": "2030-05-12 12:12",
+	"customSlug": "foo-bar"
+}
+```
+
+#### Find all published post
+
+**URL:** http://admin.lukaszstaniszewski.local/api/v1/client/post/published/find-all
+
+**HTTP method:** GET
+
+
 ## Tasks
 
 - [x] Add Post (Rest Api)
-- [] Add SEO (Rest Api)
-- [] Show all posts (Rest Api)
+- [x] Show all posts (Rest Api)
 - [] Show single post (Rest Api)
 - [] Search post engine
 
