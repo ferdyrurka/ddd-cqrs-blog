@@ -5,6 +5,7 @@ namespace App\Blog\Application\UseCase\Command\Post;
 
 use App\Blog\Domain\Post\Policy\PublishPolicyInterface;
 use App\Blog\Domain\Post\Policy\SlugPolicyInterface;
+use App\Blog\Domain\Post\PostContent;
 use App\Blog\Domain\Post\PostFactory;
 use App\Blog\Domain\Post\PostRepositoryInterface;
 use App\Shared\Infrastructure\UnityOfWork\UnityOfWork;
@@ -38,12 +39,7 @@ class CreatePostCommandHandler
     public function __invoke(CreatePostCommand $command): void
     {
         $postContent = $this->postFactory->createPostContent($command->getTitle(), $command->getContent());
-
-        $slug = $this->slugPolicy->generateSlug($postContent, $command->getCustomSlug());
-        $this->slugPolicy->checkSlug(
-            $this->postRepository->getCountBySlug($slug)
-        );
-        $postMetadata = $this->postFactory->createPostMetadata($slug);
+        $slug = $this->getSlug($postContent, $command->getCustomSlug());
 
         $postInformation = $this->postFactory->createPostInformation(
             $command->getPublishType(),
@@ -51,9 +47,23 @@ class CreatePostCommandHandler
         );
         $postInformation = $this->publishPolicy->checkPublishWay($postInformation);
 
-        $post = $this->postFactory->createPost($postMetadata, $postContent, $postInformation);
+        $post = $this->postFactory->createPost(
+            $this->postFactory->createPostMetadata($slug),
+            $postContent,
+            $postInformation
+        );
 
         $this->postRepository->add($post);
         $this->unityOfWork->commit();
+    }
+
+    private function getSlug(PostContent $postContent, ?string $customSlug): string
+    {
+        $slug = $this->slugPolicy->generateSlug($postContent, $customSlug);
+        $this->slugPolicy->checkSlug(
+            $this->postRepository->getCountBySlug($slug)
+        );
+
+        return $slug;
     }
 }
