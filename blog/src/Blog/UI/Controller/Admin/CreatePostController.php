@@ -46,6 +46,8 @@ class CreatePostController extends AbstractController
                 if ($exception->getPrevious() instanceof FoundException) {
                     return new JsonResponse(['message' => $exception->getMessage()], Response::HTTP_FOUND);
                 }
+
+                throw $exception;
             }
 
             return new JsonResponse(['success' => true]);

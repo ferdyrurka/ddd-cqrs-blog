@@ -22,8 +22,8 @@ class PostRepository extends ServiceEntityRepository implements PostRepositoryIn
             ->where('p.postMetadata.slug = :slug')
             ->setParameter('slug', $slug)
             ->getQuery()
-            ->getScalarResult()[0]
-        ;
+            ->getScalarResult()[0][1]
+            ;
     }
 
     public function add(Post $post): void
