@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace App\Blog\Domain\Post;
 
 use App\Blog\Domain\Shared\PostId;
-
 use Carbon\Carbon;
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
