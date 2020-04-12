@@ -16,13 +16,17 @@ You must added in /etc/hosts
 
 ## Links
 
-Client app http://lukaszstaniszewski.local
-
-Admin app http://admin.lukaszstaniszewski.local
-
 Client api http://lukaszstaniszewski.local/api/v1
 
 Admin api http://admin.lukaszstaniszewski.local/api/v1
+
+## Tasks
+
+- [] Add Post (Rest Api)
+- [] Add SEO (Rest Api)
+- [] Show all posts (Rest Api)
+- [] Show single post (Rest Api)
+- [] Search post engine
 
 ## Author
 
