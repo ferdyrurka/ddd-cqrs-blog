@@ -15,6 +15,17 @@ class PostRepository extends ServiceEntityRepository implements PostRepositoryIn
         parent::__construct($registry, Post::class);
     }
 
+    public function getCountBySlug(string $slug): int
+    {
+        return (int) $this->createQueryBuilder('p')
+            ->select('count(p.postId.id)')
+            ->where('p.postMetadata.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->getQuery()
+            ->getScalarResult()[0]
+        ;
+    }
+
     public function add(Post $post): void
     {
         $this->getEntityManager()->persist($post);

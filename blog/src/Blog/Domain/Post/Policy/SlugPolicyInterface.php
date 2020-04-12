@@ -9,4 +9,6 @@ use App\Blog\Domain\Post\PostMetadata;
 interface SlugPolicyInterface
 {
     public function generateSlug(PostContent $postContent, ?string $customSlug): string;
+
+    public function checkSlug(int $countIdenticalSlug): void;
 }

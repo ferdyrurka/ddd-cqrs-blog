@@ -40,6 +40,9 @@ class CreatePostCommandHandler
         $postContent = $this->postFactory->createPostContent($command->getTitle(), $command->getContent());
 
         $slug = $this->slugPolicy->generateSlug($postContent, $command->getCustomSlug());
+        $this->slugPolicy->checkSlug(
+            $this->postRepository->getCountBySlug($slug)
+        );
         $postMetadata = $this->postFactory->createPostMetadata($slug);
 
         $postInformation = $this->postFactory->createPostInformation(
