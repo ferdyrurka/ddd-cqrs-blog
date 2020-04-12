@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Blog\UI\Controller\Admin\Post;
+namespace App\Blog\UI\Controller\Admin;
 
 use App\Blog\Application\UseCase\Command\Post\CreatePostCommand;
-use App\Blog\UI\Form\Admin\Post\CreatePostForm;
-use App\Blog\UI\Request\DTO\Post\CreatePostDTO;
+use App\Blog\UI\Form\Admin\CreatePostForm;
+use App\Blog\UI\Request\DTO\CreatePostDTO;
 use Carbon\Carbon;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;

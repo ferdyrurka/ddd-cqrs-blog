@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Blog\UI\Form\Admin\Post;
+namespace App\Blog\UI\Form\Admin;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
