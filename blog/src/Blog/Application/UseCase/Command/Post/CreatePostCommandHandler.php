@@ -49,7 +49,7 @@ class CreatePostCommandHandler
         );
 
         $this->postRepository->add($post);
-        $this->postRepository->apply();
+        $this->postRepository->commit();
     }
 
     private function getSlug(PostContent $postContent, ?string $customSlug): string

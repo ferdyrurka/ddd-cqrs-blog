@@ -11,5 +11,5 @@ interface PostRepositoryInterface
 
     public function remove(Post $post): void;
 
-    public function apply(): void;
+    public function commit(): void;
 }

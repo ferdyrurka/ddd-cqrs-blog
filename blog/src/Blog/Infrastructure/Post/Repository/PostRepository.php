@@ -36,7 +36,7 @@ class PostRepository extends ServiceEntityRepository implements PostRepositoryIn
         $this->getEntityManager()->remove($post);
     }
 
-    public function apply(): void
+    public function commit(): void
     {
         $this->getEntityManager()->flush();
     }
