@@ -8,15 +8,12 @@ use App\Blog\Domain\Post\Policy\SlugPolicyInterface;
 use App\Blog\Domain\Post\PostContent;
 use App\Blog\Domain\Post\PostFactory;
 use App\Blog\Domain\Post\PostRepositoryInterface;
-use App\Shared\Infrastructure\UnityOfWork\UnityOfWork;
 
 class CreatePostCommandHandler
 {
     private PostRepositoryInterface $postRepository;
 
     private PostFactory $postFactory;
-
-    private UnityOfWork $unityOfWork;
 
     private PublishPolicyInterface $publishPolicy;
 
@@ -25,13 +22,11 @@ class CreatePostCommandHandler
     public function __construct(
         PostRepositoryInterface $postRepository,
         PostFactory $postFactory,
-        UnityOfWork $unityOfWork,
         PublishPolicyInterface $publishPolicy,
         SlugPolicyInterface $slugPolicy
     ) {
         $this->postRepository = $postRepository;
         $this->postFactory = $postFactory;
-        $this->unityOfWork = $unityOfWork;
         $this->publishPolicy = $publishPolicy;
         $this->slugPolicy = $slugPolicy;
     }
@@ -54,7 +49,7 @@ class CreatePostCommandHandler
         );
 
         $this->postRepository->add($post);
-        $this->unityOfWork->commit();
+        $this->postRepository->apply();
     }
 
     private function getSlug(PostContent $postContent, ?string $customSlug): string

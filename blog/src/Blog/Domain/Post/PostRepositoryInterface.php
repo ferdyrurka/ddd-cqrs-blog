@@ -10,4 +10,6 @@ interface PostRepositoryInterface
     public function add(Post $post): void;
 
     public function remove(Post $post): void;
+
+    public function apply(): void;
 }

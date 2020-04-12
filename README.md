@@ -22,7 +22,7 @@ Admin api http://admin.lukaszstaniszewski.local/api/v1
 
 ## Tasks
 
-- [] Add Post (Rest Api)
+- [x] Add Post (Rest Api)
 - [] Add SEO (Rest Api)
 - [] Show all posts (Rest Api)
 - [] Show single post (Rest Api)
