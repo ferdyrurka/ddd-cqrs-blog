@@ -1,4 +1,6 @@
 parameters:
+    admin_host: 'admin'
+    client_host: 'client'
 
 services:
     _defaults:

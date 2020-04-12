@@ -19,7 +19,7 @@ class FindAllPostController extends AbstractController
      * @param SerializerInterface $serializer
      * @return JsonResponse
      *
-     * @Route("/client/post/published/find-all", methods={"GET"})
+     * @Route("/client/post/published/find-all", methods={"GET"}, host="%client_host%")
      */
     public function findAllPublishedPost(MessageBusInterface $queryBus, SerializerInterface $serializer): JsonResponse
     {
