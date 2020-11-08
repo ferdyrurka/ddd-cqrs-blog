@@ -10,5 +10,5 @@ interface SlugPolicyInterface
 {
     public function generateSlug(PostContent $postContent, ?string $customSlug): string;
 
-    public function checkSlug(int $countIdenticalSlug): void;
+    public function checkSlug(int $countIdenticalSlug, string $slug): void;
 }

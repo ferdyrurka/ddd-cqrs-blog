@@ -56,7 +56,8 @@ class CreatePostCommandHandler
     {
         $slug = $this->slugPolicy->generateSlug($postContent, $customSlug);
         $this->slugPolicy->checkSlug(
-            $this->postRepository->getCountBySlug($slug)
+            $this->postRepository->getCountBySlug($slug),
+            $slug
         );
 
         return $slug;

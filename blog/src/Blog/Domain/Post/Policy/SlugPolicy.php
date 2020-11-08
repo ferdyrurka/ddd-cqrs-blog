@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Blog\Domain\Post\Policy;
 
 use App\Blog\Domain\Post\Exception\FoundException;
+use App\Blog\Domain\Post\Exception\InvalidArgumentException;
 use App\Blog\Domain\Post\PostContent;
 use PHPExtension\src\String\AsciiSlugger;
 
@@ -18,10 +19,14 @@ class SlugPolicy implements SlugPolicyInterface
         return AsciiSlugger::slug($postContent->getTitle());
     }
 
-    public function checkSlug(int $countIdenticalSlug): void
+    public function checkSlug(int $countIdenticalSlug, string $slug): void
     {
         if ($countIdenticalSlug >= 1) {
             throw new FoundException('Identical slug is found');
+        }
+
+        if (!$slug) {
+            throw new InvalidArgumentException('Slug is required parameters');
         }
     }
 }
