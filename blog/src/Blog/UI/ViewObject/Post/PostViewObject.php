@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-namespace App\Blog\Infrastructure\Post\ViewObject;
+namespace App\Blog\UI\ViewObject\Post;
 
 use DateTime;
 

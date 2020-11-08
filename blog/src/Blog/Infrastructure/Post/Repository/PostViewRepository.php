@@ -1,11 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Blog\Infrastructure\Post\Repository;
 
 use App\Blog\Application\Query\Post\PostQuery;
 use App\Blog\Domain\Post\Post;
-use App\Blog\Infrastructure\Post\ViewObject\PostViewObject;
+use App\Blog\UI\ViewObject\Post\PostViewObject;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
