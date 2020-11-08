@@ -18,11 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CreatePostController extends AbstractController
 {
     /**
-     * @param Request $request
-     * @return JsonResponse
-     *
      * @Route("/admin/create/post", methods={"POST"}, host="%admin_host%")
-     * @throws \Exception
      */
     public function createAction(Request $request): JsonResponse
     {

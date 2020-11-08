@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Tests\Blog\Domain\Post\Policy;
@@ -50,7 +51,7 @@ class PublishPolicyTest extends TestCase
         $postInformation = new PostInformation(PublishType::CRON()->getValue(), Carbon::tomorrow());
 
         $postInformation = $this->publishPolicy->checkPublishWay($postInformation);
-        $this->assertFalse($postInformation->isPublish());
+        self::assertFalse($postInformation->isPublish());
     }
 
     /**
@@ -61,6 +62,6 @@ class PublishPolicyTest extends TestCase
         $postInformation = new PostInformation(PublishType::NOW()->getValue());
 
         $postInformation = $this->publishPolicy->checkPublishWay($postInformation);
-        $this->assertTrue($postInformation->isPublish());
+        self::assertTrue($postInformation->isPublish());
     }
 }
