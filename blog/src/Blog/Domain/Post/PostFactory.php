@@ -1,8 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Blog\Domain\Post;
 
+use App\Blog\Domain\Post\Exception\InvalidArgumentException;
+use App\Blog\Domain\Post\Type\PublishType;
 use App\Blog\Domain\Shared\PostId;
 use DateTime;
 use PHPExtension\src\Uuid\Uuid;
@@ -23,19 +26,34 @@ class PostFactory
         string $publishType,
         ?DateTime $plannedPublishAt = null
     ): PostInformation {
-        return new PostInformation($publishType, $plannedPublishAt);
+        $postInformation = new PostInformation($publishType, $plannedPublishAt);
+
+        if (PublishType::NOW()->equals($postInformation->getPublishType())) {
+            $postInformation->publishPost();
+
+            return $postInformation;
+        }
+
+        if (!$postInformation->getPlannedPublishAt()) {
+            throw new InvalidArgumentException('If use cron publish type you must set planned publish date');
+        }
+
+        return $postInformation;
     }
 
-    public function createPost(
-        PostMetadata $postMetadata,
-        PostContent $postContent,
-        PostInformation $postInformation
+    public function createPostFromData(
+        PostId $postId,
+        string $title,
+        string $content,
+        string $publishType,
+        ?DateTime $plannedPublishAt,
+        string $slug
     ): Post {
         return new Post(
-            $this->createPostId(),
-            $postContent,
-            $postInformation,
-            $postMetadata
+            $postId,
+            $this->createPostContent($title, $content),
+            $this->createPostInformation($publishType, $plannedPublishAt),
+            $this->createPostMetadata($slug)
         );
     }
 

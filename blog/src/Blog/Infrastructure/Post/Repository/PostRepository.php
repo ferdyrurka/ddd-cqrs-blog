@@ -23,7 +23,7 @@ class PostRepository extends ServiceEntityRepository implements PostRepositoryIn
             ->setParameter('slug', $slug)
             ->getQuery()
             ->getScalarResult()[0][1]
-            ;
+        ;
     }
 
     public function add(Post $post): void

@@ -42,7 +42,7 @@ Admin api http://admin.lukaszstaniszewski.local/api/v1
 
 #### Find all published post
 
-**URL:** http://admin.lukaszstaniszewski.local/api/v1/client/post/published/find-all
+**URL:** http://lukaszstaniszewski.local/api/v1/client/post/published/find-all
 
 **HTTP method:** GET
 
@@ -51,8 +51,11 @@ Admin api http://admin.lukaszstaniszewski.local/api/v1
 
 - [x] Add Post (Rest Api)
 - [x] Show all posts (Rest Api)
-- [] Show single post (Rest Api)
-- [] Search post engine
+- [ ] Show single post (Rest Api)
+- [ ] Add category
+- [ ] Added analytics app
+- [ ] Search post engine
+- [ ] Commit to listener
 
 ## Author
 

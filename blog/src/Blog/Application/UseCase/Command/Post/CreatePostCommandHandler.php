@@ -1,13 +1,15 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Blog\Application\UseCase\Command\Post;
 
-use App\Blog\Domain\Post\Policy\PublishPolicyInterface;
+use App\Blog\Domain\Post\Event\Events;
+use App\Blog\Domain\Post\Event\PostWasCreatedEvent;
 use App\Blog\Domain\Post\Policy\SlugPolicyInterface;
-use App\Blog\Domain\Post\PostContent;
 use App\Blog\Domain\Post\PostFactory;
 use App\Blog\Domain\Post\PostRepositoryInterface;
+use App\Shared\Infrastructure\EventDispatcher\EventDispatcherInterface;
 
 class CreatePostCommandHandler
 {
@@ -15,46 +17,47 @@ class CreatePostCommandHandler
 
     private PostFactory $postFactory;
 
-    private PublishPolicyInterface $publishPolicy;
-
     private SlugPolicyInterface $slugPolicy;
+
+    private EventDispatcherInterface $eventDispatcher;
 
     public function __construct(
         PostRepositoryInterface $postRepository,
         PostFactory $postFactory,
-        PublishPolicyInterface $publishPolicy,
-        SlugPolicyInterface $slugPolicy
+        SlugPolicyInterface $slugPolicy,
+        EventDispatcherInterface $eventDispatcher
     ) {
         $this->postRepository = $postRepository;
         $this->postFactory = $postFactory;
-        $this->publishPolicy = $publishPolicy;
         $this->slugPolicy = $slugPolicy;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     public function __invoke(CreatePostCommand $command): void
     {
-        $postContent = $this->postFactory->createPostContent($command->getTitle(), $command->getContent());
-        $slug = $this->getSlug($postContent, $command->getCustomSlug());
+        $slug = $this->getSlug($command->getTitle(), $command->getCustomSlug());
 
-        $postInformation = $this->postFactory->createPostInformation(
+        $postId = $this->postFactory->createPostId();
+
+        $post = $this->postFactory->createPostFromData(
+            $postId,
+            $command->getTitle(),
+            $command->getContent(),
             $command->getPublishType(),
-            $command->getPlannedPublishAt()
-        );
-        $postInformation = $this->publishPolicy->checkPublishWay($postInformation);
-
-        $post = $this->postFactory->createPost(
-            $this->postFactory->createPostMetadata($slug),
-            $postContent,
-            $postInformation
+            $command->getPlannedPublishAt(),
+            $slug
         );
 
         $this->postRepository->add($post);
         $this->postRepository->commit();
+
+        $this->eventDispatcher->dispatch(new PostWasCreatedEvent($postId), Events::POST_WAS_CREATED);
     }
 
-    private function getSlug(PostContent $postContent, ?string $customSlug): string
+    private function getSlug(string $title, ?string $customSlug): string
     {
-        $slug = $this->slugPolicy->generateSlug($postContent, $customSlug);
+        $slug = $this->slugPolicy->generateSlug($title, $customSlug);
+
         $this->slugPolicy->checkSlug(
             $this->postRepository->getCountBySlug($slug),
             $slug
