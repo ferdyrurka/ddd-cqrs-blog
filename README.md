@@ -64,10 +64,8 @@ Admin api http://admin.lukaszstaniszewski.local/api/v1
 
 - [x] Add Post (Rest Api)
 - [x] Show all posts (Rest Api)
-- [ ] Show single post (Rest Api)
 - [x] Add category
-- [ ] Added analytics app
-- [ ] Search post engine
+- [ ] Added category to post
 - [ ] Commit to listener
 
 ## Author
