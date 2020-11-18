@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Embeddable()
  */
-final class PostId
+final class CategoryId
 {
     /**
      * @ORM\Id()

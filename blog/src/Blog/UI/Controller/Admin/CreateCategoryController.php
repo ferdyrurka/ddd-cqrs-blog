@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace App\Blog\UI\Controller\Admin;
 
-use App\Blog\Application\UseCase\Command\Post\CreatePostCommand;
+use App\Blog\Application\UseCase\Command\Category\CreateCategoryCommand;
 use App\Blog\Domain\Post\Exception\FoundException;
-use App\Blog\UI\Form\Admin\CreatePostForm;
-use App\Blog\UI\Request\DTO\CreatePostDTO;
-use Carbon\Carbon;
+use App\Blog\UI\Form\Admin\CreateCategoryForm;
+use App\Blog\UI\Request\DTO\CreateCategoryDTO;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,14 +15,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CreatePostController extends AbstractController
+class CreateCategoryController extends AbstractController
 {
     /**
-     * @Route("/admin/create/post", methods={"POST"}, host="%admin_host%")
+     * @Route("/admin/create/category", methods={"POST"}, host="%admin_host%")
      */
-    public function createAction(Request $request): JsonResponse
+    public function indexAction(Request $request): JsonResponse
     {
-        $form = $this->createForm(CreatePostForm::class, new CreatePostDTO());
+        $form = $this->createForm(CreateCategoryForm::class, new CreateCategoryDTO());
         $form->submit(
             json_decode($request->getContent(), true, 512, JSON_THROW_ON_ERROR)
         );
@@ -32,13 +31,7 @@ class CreatePostController extends AbstractController
             $dto = $form->getData();
 
             try {
-                $this->dispatchMessage(new CreatePostCommand(
-                    $dto->title,
-                    $dto->content,
-                    $dto->publishType,
-                    new Carbon($dto->plannedPublishAt),
-                    $dto->customSlug
-                ));
+                $this->dispatchMessage(new CreateCategoryCommand($dto->name));
             } catch (HandlerFailedException $exception) {
                 if ($exception->getPrevious() instanceof FoundException) {
                     return new JsonResponse(['message' => $exception->getMessage()], Response::HTTP_FOUND);

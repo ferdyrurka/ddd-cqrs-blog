@@ -12,7 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Persistence\ManagerRegistry;
 
-class PostViewRepository extends ServiceEntityRepository implements PostQuery
+class PostProjectionRepository extends ServiceEntityRepository implements PostQuery
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -31,14 +31,14 @@ class PostViewRepository extends ServiceEntityRepository implements PostQuery
         $collection = new ArrayCollection();
 
         foreach ($posts as $post) {
-            $post = new PostViewObject(
-                $post['postContent.content'],
-                $post['postContent.title'],
-                $post['postInformation.publishedAt'],
-                $post['postMetadata.slug']
+            $collection->add(
+                new PostViewObject(
+                    $post['postContent.content'],
+                    $post['postContent.title'],
+                    $post['postInformation.publishedAt'],
+                    $post['postMetadata.slug']
+                )
             );
-
-            $collection->add($post);
         }
 
         return $collection;

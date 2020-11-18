@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Blog\Domain\Post;
@@ -12,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Embeddable()
  */
-final class PostInformation
+final class Information
 {
     /**
      * @ORM\Column(type="boolean", options={"default": 0})

@@ -1,12 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Blog\Domain\Post;
 
 use App\Blog\Domain\Shared\PostId;
-use Carbon\Carbon;
 use Doctrine\ORM\Mapping as ORM;
-use DateTime;
 
 /**
  * @ORM\Table(name="post")
@@ -21,35 +20,35 @@ final class Post
     private PostId $postId;
 
     /**
-     * @ORM\Embedded(class="App\Blog\Domain\Post\PostContent", columnPrefix=false)
+     * @ORM\Embedded(class="Content", columnPrefix=false)
      */
-    private PostContent $postContent;
+    private Content $postContent;
 
     /**
-     * @ORM\Embedded(class="App\Blog\Domain\Post\PostInformation", columnPrefix=false)
+     * @ORM\Embedded(class="Information", columnPrefix=false)
      */
-    private PostInformation $postInformation;
+    private Information $postInformation;
 
     /**
-     * @ORM\Embedded(class="App\Blog\Domain\Post\PostMetadata", columnPrefix=false)
+     * @ORM\Embedded(class="Metadata", columnPrefix=false)
      */
-    private PostMetadata $postMetadata;
+    private Metadata $postMetadata;
 
     /**
-     * @ORM\Column(type="datetime", nullable=false)
+     * @ORM\Embedded(class="Timeline", columnPrefix=false)
      */
-    private DateTime $createdAt;
+    private Timeline $timeline;
 
     public function __construct(
         PostId $postId,
-        PostContent $postContent,
-        PostInformation $postInformation,
-        PostMetadata $postMetadata
+        Content $postContent,
+        Information $postInformation,
+        Metadata $postMetadata
     ) {
         $this->postId = $postId;
         $this->postContent = $postContent;
         $this->postInformation = $postInformation;
         $this->postMetadata = $postMetadata;
-        $this->createdAt = Carbon::now();
+        $this->timeline = new Timeline();
     }
 }

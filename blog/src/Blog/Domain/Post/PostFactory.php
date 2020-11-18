@@ -10,23 +10,23 @@ use App\Blog\Domain\Shared\PostId;
 use DateTime;
 use PHPExtension\src\Uuid\Uuid;
 
-class PostFactory
+final class PostFactory
 {
-    public function createPostContent(string $title, string $content): PostContent
+    public function createPostContent(string $title, string $content): Content
     {
-        return new PostContent($title, $content);
+        return new Content($title, $content);
     }
 
-    public function createPostMetadata(string $slug): PostMetadata
+    public function createPostMetadata(string $slug): Metadata
     {
-        return new PostMetadata($slug);
+        return new Metadata($slug);
     }
 
     public function createPostInformation(
         string $publishType,
         ?DateTime $plannedPublishAt = null
-    ): PostInformation {
-        $postInformation = new PostInformation($publishType, $plannedPublishAt);
+    ): Information {
+        $postInformation = new Information($publishType, $plannedPublishAt);
 
         if (PublishType::NOW()->equals($postInformation->getPublishType())) {
             $postInformation->publishPost();

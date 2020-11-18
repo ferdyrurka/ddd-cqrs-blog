@@ -12,6 +12,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Blog/Domain/Post'
                 prefix: 'App\Blog\Domain\Post'
                 alias: Blog\Post
+            Blog\Category:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Blog/Domain/Category'
+                prefix: 'App\Blog\Domain\Category'
+                alias: Blog\Category
             Blog\Shared:
                 is_bundle: false
                 type: annotation

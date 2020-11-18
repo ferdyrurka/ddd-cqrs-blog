@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Blog\Domain\Post;
@@ -8,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Embeddable()
  */
-final class PostContent
+final class Content
 {
     /**
      * @ORM\Column(type="string", length=512)

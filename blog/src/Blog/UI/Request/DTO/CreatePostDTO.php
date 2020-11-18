@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Blog\UI\Request\DTO;
 
-use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class CreatePostDTO
