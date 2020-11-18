@@ -22,7 +22,7 @@ Admin api http://admin.lukaszstaniszewski.local/api/v1
 
 ## API
 
-#### Add post
+### Add post
 
 **URL:** http://admin.lukaszstaniszewski.local/api/v1/admin/create/post
 
@@ -40,13 +40,13 @@ Admin api http://admin.lukaszstaniszewski.local/api/v1
 }
 ```
 
-#### Find all published post
+### Find all published post
 
 **URL:** http://lukaszstaniszewski.local/api/v1/client/post/published/find-all
 
 **HTTP method:** GET
 
-#### Add category
+### Add category
 
 **URL:** http://admin.lukaszstaniszewski.local/api/v1/admin/create/category
 
