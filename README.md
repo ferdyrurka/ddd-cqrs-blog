@@ -65,7 +65,7 @@ Admin api http://admin.lukaszstaniszewski.local/api/v1
 - [x] Add Post (Rest Api)
 - [x] Show all posts (Rest Api)
 - [x] Add category
-- [ ] Added category to post
+- [ ] Add category to post
 - [ ] Commit to listener
 
 ## Author
