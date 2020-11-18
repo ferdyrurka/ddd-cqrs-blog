@@ -46,13 +46,26 @@ Admin api http://admin.lukaszstaniszewski.local/api/v1
 
 **HTTP method:** GET
 
+#### Add category
+
+**URL:** http://admin.lukaszstaniszewski.local/api/v1/admin/create/category
+
+**HTTP method:** POST
+
+**Body:**
+
+```json
+{
+	"name": "Category name"
+}
+```
 
 ## Tasks
 
 - [x] Add Post (Rest Api)
 - [x] Show all posts (Rest Api)
 - [ ] Show single post (Rest Api)
-- [ ] Add category
+- [x] Add category
 - [ ] Added analytics app
 - [ ] Search post engine
 - [ ] Commit to listener
