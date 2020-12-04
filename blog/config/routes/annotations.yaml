@@ -1,9 +1,9 @@
 admin_controller:
-    resource: '../../src/Blog/UI/Controller/Admin'
+    resource: '../../src/App/UI/Controller/Admin'
     type: annotation
 
 client_controller:
-    resource: '../../src/Blog/UI/Controller/Client'
+    resource: '../../src/App/UI/Controller/Client'
     type: annotation
 
 kernel:

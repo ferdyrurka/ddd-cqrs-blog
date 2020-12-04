@@ -11,8 +11,8 @@ services:
         resource: '../src/*'
         exclude: '../src/{DependencyInjection,Entity,Migrations,Tests}'
 
-    App\Blog\UI\Controller\Admin\:
-        resource: '../src/Blog/UI/Controller/Admin'
+    App\UI\Controller\:
+        resource: '../src/App/UI/Controller/'
         tags: ['controller.service_arguments']
 
     App\Blog\Application\UseCase\Command\Post\:

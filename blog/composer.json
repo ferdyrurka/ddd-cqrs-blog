@@ -36,7 +36,9 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/",
+            "App\\": "src/App/",
+            "App\\Blog\\": "src/Blog/",
+            "App\\Shared\\": "src/Shared/",
             "PHPExtension\\": "lib/php-extension/"
         }
     },
