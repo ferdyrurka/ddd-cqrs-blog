@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Blog\Domain\Post\Policy;
+namespace Symfony\Tests\Blog\Domain\Post\Policy;
 
-use App\Blog\Domain\Post\Exception\InvalidArgumentException;
-use App\Blog\Domain\Post\Exception\RuntimeException;
-use App\Blog\Domain\Post\Policy\PublishPolicy;
-use App\Blog\Domain\Post\Information;
-use App\Blog\Domain\Post\Type\PublishType;
+use Symfony\Blog\Domain\Post\Exception\InvalidArgumentException;
+use Symfony\Blog\Domain\Post\Exception\RuntimeException;
+use Symfony\Blog\Domain\Post\Policy\PublishPolicy;
+use Symfony\Blog\Domain\Post\Information;
+use Symfony\Blog\Domain\Post\Type\PublishType;
 use Carbon\Carbon;
 use PHPUnit\Framework\TestCase;
 

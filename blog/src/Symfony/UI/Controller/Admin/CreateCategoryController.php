@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\UI\Controller\Admin;
+namespace App\Symfony\UI\Controller\Admin;
 
 use App\Blog\Application\UseCase\Command\Category\CreateCategoryCommand;
 use App\Blog\Domain\Post\Exception\FoundException;
-use App\UI\Form\Admin\CreateCategoryForm;
-use App\UI\Request\DTO\CreateCategoryDTO;
+use App\Symfony\UI\Form\Admin\CreateCategoryForm;
+use App\Symfony\UI\Request\DTO\CreateCategoryDTO;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

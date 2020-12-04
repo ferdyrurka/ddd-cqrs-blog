@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\UI\Controller\Client;
+namespace App\Symfony\UI\Controller\Client;
 
 use App\Blog\Application\Query\Post\FindAllPublishedPostQuery;
 use Doctrine\Common\Collections\Collection;

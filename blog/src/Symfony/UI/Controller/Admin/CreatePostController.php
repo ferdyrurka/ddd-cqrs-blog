@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\UI\Controller\Admin;
+namespace App\Symfony\UI\Controller\Admin;
 
 use App\Blog\Application\UseCase\Command\Post\CreatePostCommand;
 use App\Blog\Domain\Post\Exception\FoundException;
-use App\UI\Form\Admin\CreatePostForm;
-use App\UI\Request\DTO\CreatePostDTO;
+use App\Symfony\UI\Form\Admin\CreatePostForm;
+use App\Symfony\UI\Request\DTO\CreatePostDTO;
 use Carbon\Carbon;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;

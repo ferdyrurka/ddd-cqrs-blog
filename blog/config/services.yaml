@@ -11,8 +11,8 @@ services:
         resource: '../src/*'
         exclude: '../src/{DependencyInjection,Entity,Migrations,Tests}'
 
-    App\UI\Controller\:
-        resource: '../src/App/UI/Controller/'
+    App\Symfony\UI\Controller\:
+        resource: '../src/Symfony/UI/Controller/'
         tags: ['controller.service_arguments']
 
     App\Blog\Application\UseCase\Command\Post\:

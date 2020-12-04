@@ -6,7 +6,7 @@ namespace App\Blog\Infrastructure\Post\Repository;
 
 use App\Blog\Application\Query\Post\PostQuery;
 use App\Blog\Domain\Post\Post;
-use App\UI\ViewObject\Post\PostViewObject;
+use App\Symfony\UI\ViewObject\Post\PostViewObject;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;

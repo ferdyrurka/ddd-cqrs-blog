@@ -36,7 +36,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/App/",
+            "App\\": "src/",
             "App\\Blog\\": "src/Blog/",
             "App\\Shared\\": "src/Shared/",
             "PHPExtension\\": "lib/php-extension/"

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\UI\Form\Admin;
+namespace App\Symfony\UI\Form\Admin;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;

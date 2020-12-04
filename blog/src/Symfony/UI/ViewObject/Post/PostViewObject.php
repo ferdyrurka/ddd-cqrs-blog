@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\UI\ViewObject\Post;
+namespace App\Symfony\UI\ViewObject\Post;
 
 use DateTime;
 

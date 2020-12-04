@@ -1,9 +1,9 @@
 admin_controller:
-    resource: '../../src/App/UI/Controller/Admin'
+    resource: '../../src/Symfony/UI/Controller/Admin'
     type: annotation
 
 client_controller:
-    resource: '../../src/App/UI/Controller/Client'
+    resource: '../../src/Symfony/UI/Controller/Client'
     type: annotation
 
 kernel:
