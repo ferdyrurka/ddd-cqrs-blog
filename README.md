@@ -65,7 +65,9 @@ Admin api http://admin.lukaszstaniszewski.local/api/v1
 - [x] Add Post (Rest Api)
 - [x] Show all posts (Rest Api)
 - [x] Add category
-- [ ] Add category to post
+- [ ] Added travis, circleci, e2e tests
+- [ ] Add relationship category to post
+- [ ] Add new bounded context
 - [ ] Commit to listener
 
 ## Author

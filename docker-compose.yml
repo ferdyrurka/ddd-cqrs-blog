@@ -14,7 +14,7 @@ services:
           - client
 
     admin:
-        image: php:7-4-cqrs-blog
+        image: php:8-0-cqrs-blog
         build:
             dockerfile: Dockerfile
             context: .docker/apache2
@@ -23,7 +23,7 @@ services:
             - './.docker/apache2/admin.conf:/etc/apache2/sites-enabled/000-default.conf'
 
     client:
-        image: php:7-4-cqrs-blog
+        image: php:8-0-cqrs-blog
         depends_on:
           - admin
         volumes:
